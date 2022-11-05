@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>I J A R E P E</title>
+
+	<!-- Set Favicon and all icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+
+	<!-- Add Bootstrap 5 via jsDelivr CDN -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- Add Google Font from Google API -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@300;400;600&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome Script -->
+	<script src="https://kit.fontawesome.com/c9b43d3d94.js" crossorigin="anonymous"></script>
+
+	<style>
+		:root {
+			--white: #FFF;
+			--black: #000;
+			--purple: #B55AFD;
+			--darkPurple: #231F20;
+			--baseBlue: #4679E1;
+			--navyBlue1: #004A98;
+			--yellow: #FFDE59;
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			margin: 0;
+			padding: 0;
+			max-width: 100%;
+		}
+
+		section {
+			padding: 1.5rem 0
+		}
+
+		nav.navbar {
+			padding: 1rem;
+			text-transform: capitalize;
+			/* position: sticky;
+			top: 0px; */
+			z-index: 100;
+		}
+
+		.navbar-brand>img {
+			height: 2.5rem;
+		}
+
+		.navbar-nav>* {
+			margin: 0.5rem 1rem;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		.text-serif {
+			font-family: 'Source Serif Pro', serif;
+		}
+
+		h1 {
+			font-weight: 600;
+		}
+
+		h2,
+		h3 {
+			font-weight: 400;
+		}
+
+		h4 {
+			font-weight: 300;
+		}
+
+		.btn {
+			font-weight: 600;
+		}
+
+		.btn-purple {
+			color: var(--purple);
+			border-color: var(--purple);
+		}
+
+		.btn-purple:hover {
+			color: var(--white);
+			background-color: var(--purple);
+		}
+
+		.bg-purple {
+			background-color: var(--purple);
+		}
+
+		.bg-baseBlue {
+			background-color: var(--baseBlue);
+		}
+
+		.bg-yellow {
+			background-color: var(--yellow);
+		}
+
+		.bg-hex {
+			background-image: url("https://i.ibb.co/5n7fWSw/Hxagon-Pattern.png");
+			background-repeat: repeat;
+			background-size: contain;
+			background-position: -40px 100%;
+		}
+
+		.text-baseBlue {
+			color: var(--baseBlue);
+		}
+
+		.text-blue {
+			color: var(--navyBlue1);
+		}
+
+		#hero {
+			min-height: 36rem;
+			width: 100%;
+			margin: 0;
+		}
+
+		#hero-bg {
+			position: absolute;
+			height: 42rem;
+			width: 100%;
+			left: 0;
+			top: 0;
+			background-image: url("https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+			background-position: 50% 70%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			filter: blur(2px) brightness(50%);
+			z-index: -100;
+		}
+
+		#hero-content {
+			margin: 2rem auto 0;
+			width: 70%;
+			z-index: 50;
+		}
+
+		#hero-content>* {
+			margin: 2rem 0.5rem 0;
+		}
+
+		.hero-buttons {
+			margin-top: 2rem;
+		}
+
+		#features {
+			padding: 1rem;
+		}
+
+		.feature {
+			transition: 0.4s;
+			margin: 1.5rem auto;
+		}
+
+		.feature:hover {
+			cursor: pointer;
+			transform: scale(1.1);
+		}
+
+		.features-heading {
+			line-height: 2.5;
+			padding: 1rem;
+			color: var(--navyBlue1);
+		}
+
+		#about .card {
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			border-radius: 0;
+		}
+
+		#about .card-body {
+			color: #bbb;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 1.5rem;
+		}
+
+		#about .row> :nth-child(1) {
+			padding: 1rem;
+		}
+
+		#about .ijarts-cover {
+			margin: 0.5rem auto 2rem;
+			width: 18rem;
+			height: auto;
+			-moz-box-shadow: 3px 3px 5px 6px #555;
+			-webkit-box-shadow: 3px 3px 5px 6px #555;
+			box-shadow: 3px 3px 5px 6px #555;
+		}
+
+		#about .coming-soon {
+			background-color: var(--purple);
+			color: var(--white);
+			font-weight: 600;
+		}
+
+		#about .card-text {
+			padding: 4rem 0 2rem;
+			line-height: 1.5;
+			text-align: justify;
+			text-justify: inter-word;
+		}
+
+		#objectives .objective-boxes-container> :nth-child(1),
+		.objective-boxes-container> :nth-child(3) {
+			height: 15rem;
+		}
+
+		#objectives .objective-box {
+			min-width: 18rem;
+			align-self: center;
+			transition: 0.4s;
+			text-align: justify;
+			text-justify: inter-word;
+		}
+
+		#objectives .objective-box:hover {
+			min-width: 18rem;
+			align-self: center;
+			transform: scale(1.025);
+			cursor: pointer;
+		}
+
+		#scope .scope-box {
+			height: 25rem;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#scope .scope-bg {
+			position: absolute;
+			height: 25rem;
+			width: inherit;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			filter: blur(1px) brightness(50%);
+		}
+
+		#scope .scope-bg.scope-1 {
+			background-image: url("https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80");
+		}
+
+		#scope .scope-bg.scope-2 {
+			background-image: url("https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+		}
+
+		#scope .scope-bg.scope-3 {
+			background-image: url("https://images.unsplash.com/photo-1627920769541-daa658ed6b59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80");
+		}
+
+		#scope .scope-bg.scope-4 {
+			background-image: url("https://images.unsplash.com/photo-1553406830-f6e44ac97624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80");
+			filter: blur(2px) brightness(40%);
+		}
+
+		#scope .scope-bg.scope-5 {
+			background-image: url("https://images.unsplash.com/photo-1627021741107-7bdd2782c5ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+			filter: brightness(40%);
+		}
+
+		#scope .scope-bg.scope-6 {
+			background-image: url("https://images.unsplash.com/photo-1594050157186-4d2a5dc0c990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+		}
+
+		#scope .scope-bg.scope-7 {
+			background-image: url("https://cdn.pixabay.com/photo/2016/03/04/19/36/gears-1236578_960_720.jpg");
+			filter: blur(2px) brightness(40%);
+		}
+
+		#scope .scope-bg.scope-8 {
+			background-image: url("https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+		}
+
+		#scope .scope-bg.scope-9 {
+			background-image: url("https://cdn.pixabay.com/photo/2018/02/28/15/17/red-blood-cells-3188223_960_720.jpg");
+		}
+
+		#scope .scope-bg.scope-10 {
+			background-image: url("https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+		}
+
+		#scope .scope-box .h3 {
+			z-index: 50;
+			font-weight: bolder;
+		}
+
+		@media only screen and (max-width: 600px) {
+			#hero-content {
+				margin: 0 auto;
+				width: 80%;
+				font-size: 2rem;
+			}
+
+			#about .card-text {
+				text-align: center;
+			}
+		}
+	</style>
+</head>
+
+<body class="bg-light text-center">
+
+	<!-- Nav Bar Starts -->
+	<nav class="navbar navbar-dark navbar-expand-lg h5 fw-light">
+		<div class="container-fluid">
+			<a class="navbar-brand me-auto" href="#" oncontextmenu="return false;">
+				<img src="android-chrome-192x192.png" alt="">
+			</a>
+			<button class="navbar-toggler" name="button" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation" id="navbar-toggler-btn">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link active" href="#about">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#objectives">Objectives</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#scope">Scope</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#subscription">Pricing</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#editorial">Editorial</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#submission">Submission</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Nav Bar Ends -->
+
+
+	<!-- Hero Section Starts -->
+	<section id="hero" class="hero text-dark d-flex justify-content-center">
+		<div id="hero-bg"></div>
+		<div id="hero-content" class="text-center text-white">
+			<h1 class="display-4 fw-bold">
+				International Journal of Advanced Research in Education and Physical Education (IJAREPE)
+			</h1>
+			<p class="h3 fw-light">
+				An open access multidisciplinary science research journal
+			</p>
+			<div class="col-lg-9 mx-auto">
+				<div class="
+							hero-buttons
+							d-grid
+							gap-2
+							d-sm-flex
+							justify-content-sm-center
+						">
+					<a href="#submission">
+						<button type="button" class="btn btn-outline btn-purple btn-lg px-4 me-sm-3">
+							Submit Article
+						</button>
+					</a>
+					<a href="https://www.aura-international.org" target="_blank" rel="noreferrer">
+						<button type="button" class="btn btn-outline-light btn-lg px-4" title="Aura International">
+							Visit Publisher
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero Section Ends -->
+
+
+	<!-- FEATURES Section Starts -->
+	<section id="features" class="bg-light">
+		<div class="container">
+			<div class="row text-center" style="padding: 4rem 0">
+
+				<div class="feature col-lg-3">
+					<i class="fas fa-lock-open fa-2x mb-3"></i><br />
+					<span class="features-heading h4 fw-bold lh-1">Open Access</span>
+					<!-- <p class="features-text">
+							So easy to use, even your dog could do it.
+						</p> -->
+				</div>
+
+				<div class="feature col-lg-3">
+					<i class="fas fa-network-wired fa-2x"></i><br />
+					<span class="features-heading h4 fw-bold">Multidisciplinary</span>
+					<!-- <p class="features-text">
+							We have all the dogs, the greatest dogs.
+						</p> -->
+				</div>
+
+				<div class="feature col-lg-3">
+					<i class="fas fa-users fa-2x"></i><br />
+					<span class="features-heading h4 fw-bold">Peer-Reviewed</span>
+					<!-- <p class="features-text">
+							Find the love of your dog's life or your money back.
+						</p> -->
+				</div>
+
+				<div class="feature col-lg-3">
+					<i class="far fa-calendar-alt fa-2x"></i><br />
+					<span class="features-heading h4 fw-bold">Bi-annual</span>
+					<!-- <p class="features-text">
+							Find the love of your dog's life or your money back.
+						</p> -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- FEATURES Section Ends -->
+
+
+	<!-- ABOUT Section Starts -->
+	<section id="about" class="card bg-baseBlue text-white">
+		<div class="card-body text-white">
+			<h3 class="card-title display-5 fw-bold mb-5">About IJARTS</h3>
+			<div class="row d-flex flex-column flex-lg-row">
+				<div class="col-lg-5 d-flex flex-column">
+					<img src="https://i.ibb.co/pLYBmmG/IJARTS-Cover-Page.png" alt="IJARTS Cover"
+						class="ijarts-cover d-block">
+					<span>
+						<span class="btn-lg px-5 py-3 coming-soon fs-4">
+							Coming Soon...
+						</span>
+					</span>
+				</div>
+				<div class="col-lg-7 d-flex flex-column justify-content-center mb-5">
+					<p class="card-text fs-5 text-justify fw-light">
+						International Journal of Advance Research in Education and Physical Education (IJAREPE) is an
+						upcoming open access, multispectral research journal with dual dimensions of Education and
+						Physical Education from the publishing house AURA INTERNATIONAL. The newly appeared research
+						journal will be distributed and subscribed worldwide. IJAREPE is a bi-annual online journal in
+						feature and the upcoming first volume and the first issue will acquire ISSN after its online
+						publication.
+					</p>
+					<div class="about-buttons	d-grid gap-2 d-sm-flex justify-content-sm-center">
+						<a href="#subscription">
+							<button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 my-2">
+								Subscription
+							</button>
+						</a>
+						<a href="#submission">
+							<button type="button" class="btn btn-outline-light btn-lg px-4 my-2">
+								Submit Article
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ABOUT Section Ends -->
+
+
+	<!-- OBJECTIVES Section Starts -->
+	<section id="objectives" class="bg-hex">
+		<div class="card-body text-blue">
+			<h3 class="card-title display-5 fw-bold my-3">Aims and Objectives</h3>
+			<div class="container-fluid">
+				<div class="d-flex objective-boxes-container flex-column flex-lg-row p-5">
+					<div class="col objective-box my-2 bg-purple text-white px-3 py-5 mx-2">
+						<p class="fs-5 fw-light">
+							To spread and publish modern research works in both of the popular fields like Education and
+							Physical Education, IJAREPE will perform as a pure and high quality journal with world based
+							knowledge sharing system.
+						</p>
+					</div>
+					<div class="col objective-box my-2 bg-purple text-white px-3 py-5 mx-2">
+						<p class="fs-5 fw-light">
+							To select, evaluate and publish high quality research works in Education and Physical
+							Education in online, open access, plagiarism free, peer reviewed international journal like
+							IJAREPE.
+						</p>
+					</div>
+					<div class="col objective-box my-2 bg-purple text-white px-3 py-5 mx-2">
+						<p class="fs-5 fw-light">
+							To reach IJAREPE as one of the reliable and valuable research journal with international
+							impacts.
+						</p>
+					</div>
+				</div>
+			</div>
+	</section>
+	<!-- OBJECTIVES Section Ends -->
+
+
+	<!-- SCOPE Section Starts -->
+	<!-- <section id="scope" class="card bg-light pb-0">
+		<div class="card-body text-blue px-0 pb-0">
+			<h3 class="card-title display-6 fw-bold my-3 pb-4">
+				The journal covers the following areas of science
+			</h3>
+			<div class="container-fluid text-white">
+				<div class="row">
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-1"></div>
+						<div class="h3">
+							Animal and Veterinary Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-2"></div>
+						<div class="h3">
+							Fishery and Aquaculture Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-3"></div>
+						<div class="h3">
+							Agriculture and Forestry Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-4"></div>
+						<div class="h3">
+							Computer and Information Technology Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-5"></div>
+						<div class="h3">
+							Geography and Geological Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-6"></div>
+						<div class="h3">
+							Earth and Environmental Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-7"></div>
+						<div class="h3">
+							Engineering and Material Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-8"></div>
+						<div class="h3">
+							Medical and Forensic Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-9"></div>
+						<div class="h3">
+							Biological Sciences
+						</div>
+					</div>
+					<div class="scope-box col-sm-6 col-xs-12 p-5">
+						<div class="scope-bg scope-10"></div>
+						<div class="h3">
+							Chemical Sciences
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section> -->
+	<!-- SCOPE Section Ends -->
+
+
+	<!-- SUBSCRIPTION Section Starts -->
+	<section id="subscription" class="card bg-baseBlue">
+		<div class="card-body text-white">
+			<h3 class="card-title display-5 fw-bold my-3">Subscription Plan</h3>
+			<p class="card-text">
+			<div class="row d-flex justify-content-center">
+				<div class="col-6 d-flex">
+					<div class="card w-75 bg-yellow" style=" margin: 1rem auto; min-width: 140px;">
+						<div class="card-body py-5">
+							<div class="h4 text-dark">
+								<span class="text-serif fw-bold"> Subscription for India</span> <br />
+								<span class="text-blue d-inline-block fs-2 fw-bold pt-3 mb-0">₹1500</span> / year
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 d-flex">
+					<div class="card w-75 bg-yellow" style="margin: 1rem auto; min-width: 140px;">
+						<div class="card-body py-5">
+							<div class="h4 text-dark">
+								<span class="text-serif fw-bold"> Subscription for Abroad</span> <br />
+								<span class="text-blue d-inline-block fs-2 fw-bold pt-3 mb-0">$400</span> / year
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</p>
+			<div class="mt-5 mx-auto fs-4 w-75">
+				Subscription charge should be paid in favour of AURA INTERNATIONAL by online account deposit or D.D.
+				or cheque deposit.
+			</div>
+			<div class="card bg-purple text-white mt-4 w-75 mx-auto">
+				<div class="card-title fw-bold h3 pt-3">Bank Account Details:</div>
+				<p class="fs-5 my-4">
+					AURA INTERNATIONAL <br />
+					Bank Of Baroda <br />
+					Chakdaha Branch, Chakdaha- 741222 <br />
+					<br />
+					A/c No: <span class="fw-bold">37170200000408</span><br />
+					IFSC Code: <span class="fw-bold">BARB0CHAKDA</span>
+				</p>
+			</div>
+		</div>
+	</section>
+	<!-- SUBSCRIPTION Section Ends -->
+
+
+	<!-- EDITORIAL Section Starts -->
+	<section id="editorial" class="card bg-hex">
+		<div class="card-body text-blue text-center">
+			<h3 class="card-title display-5 fw-bold my-3">Editorial</h3>
+			<h4 class="rounded-1 d-inline-block fs-3 fw-normal mt-3 bg-purple text-white px-4 py-3 text-uppercase">
+				Chief Editors
+			</h4>
+			<div class="d-flex justify-content-center row py-5 text-baseBlue">
+				<div class="col-lg-4 d-flex">
+					<div class="card w-75 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Ruma Banerjee
+							</p>
+							<div class="fs-5">
+								PhD in Environmental Science.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Publisher, AURA INTERNATIONAL,</div>
+							<div>Rathtala, Lalpur, Chakdaha, </div>
+							<div>P.O.- Chakdaha, District- Nadia,</div>
+							<div>PIN- 741222, </div>
+							<div>West Bengal, India.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex">
+					<div class="card w-75 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Ferit Gürbüz
+							</p>
+							<div class="fs-5">
+								Associate Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Mathematics Education,</div>
+							<div>Hakkari University, TURKEY. </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h4 class="rounded-1 d-inline-block fs-3 fw-normal mt-3 bg-purple text-white px-4 py-3 text-uppercase">
+				Editorial Board
+			</h4>
+			<div class="d-flex justify-content-center row py-5 text-baseBlue">
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Siranee Sreesai
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Environmental Health Science,</div>
+							<div> Faculty of Public Health, Mahidol University, </div>
+							<div>Bangkok, Thailand.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Hari Mohan Srivastava
+							</p>
+							<div class="fs-5">
+								Professor Emeritus.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Mathematics and Statistics, </div>
+							<div>University of Victoria, Victoria, </div>
+							<div>British Columbia V8W 3R4, Canada.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Varun Perumalla
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Enterprise Information Modeling Engineer</div>
+							<div>California Independent System Operator</div>
+							<div>Folsom, CA, USA.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. S. Prabhu
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Biotechnology,</div>
+							<div>Sri Venkateswara College of Engineering,</div>
+							<div>Sriperumbudur, India.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Vishnu Narayan Mishra
+							</p>
+							<div class="fs-5">
+								Professor & Head,
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Mathematics,</div>
+							<div>Indira Gandhi National Tribal University, Lalpur,</div>
+							<div>Amarkantak, Anuppur 484 887, MP, India.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Giuseppe Murdaca
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Clinical Immunology Unit,</div>
+							<div>Department of Internal Medicine,</div>
+							<div>University of Genoa, Italy.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. S.P.Mishra
+							</p>
+							<div class="fs-5">
+								Assistant Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Depatment of Physics,</div>
+							<div>K.N.Govt. P.G.College, Gyanpur,</div>
+							<div>Bhadohi -221304, UP, India.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-1 my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Tanmay Sanyal
+							</p>
+							<div class="fs-5">
+								Assistant Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Zoology, </div>
+							<div>Krishnagar Government College, </div>
+							<div>University of Kalyani, </div>
+							<div>Krishnagar, Nadia, </div>
+							<div>West Bengal, India.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Ho Soon Min
+							</p>
+							<div class="fs-5">
+								Associate Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>INTI International University,</div>
+							<div>Jln BBN 12/1, Bandar Baru Nilai,</div>
+							<div>71800 Negeri Sembilan, Malaysia.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Dattatreya Mukherjee
+							</p>
+							<div class="fs-5">
+								Doctor
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>MBBS and RA from Jinan University, P.R China,</div>
+							<div>Doctor,</div>
+							<div>Raiganj Government Medical College and Hospital,</div>
+							<div>West Bengal, India</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-auto my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. OLANREWAJU, Philip Oladapo
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Department of Mathematical Sciences,</div>
+							<div>Oduduwa University, Ipetumodu, Ile-Ife,</div>
+							<div>Osun State., Nigeria.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-9 d-flex">
+					<div class="card w-100 mx-1 my-3 pt-3 chief-editor-card">
+						<div class="card-head">
+							<p class="h2">
+								Dr. Chukwma Stephen Ezeonu
+							</p>
+							<div class="fs-5">
+								Professor.
+							</div>
+						</div>
+						<div class="card-body ds-6">
+							<div>Industrial Biochemistry and Environmental Biotechnology Unit,</div>
+							<div>Department of Biochemistry, </div>
+							<div>Faculty of Pure and Applied Sciences, </div>
+							<div>Federal University Wukari, 200 Katsina- ALA Road,</div>
+							<div>PMB 1020 Wukari, Taraba State, Nigeria.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rounded-2 bg-purple py-5 container">
+				<p class=" h4 text-white px-3 text-justify">
+					IJARTS is the research journal that is subjected to editing by pervasive and skillful editorial
+					board
+					mustering by renowned scientists and researchers. We are inviting expertise scientists, professors,
+					and
+					researchers related to scientific research to become glowing members of the IJARTS editorial board.
+					The
+					interested colleagues may send their resumes to:
+				</p>
+				<a href="mailto:editor@aura-international.org"
+					class="btn btn-lg bg-light px-4 py-3 d-inline-block mx-auto mt-4 text-blue fw-bold h3 mw-100">
+					<p class="w-100">editor@aura-international.org</p>
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- EDITORIAL Section Ends -->
+
+	<!-- SUBMISSION Section Starts -->
+	<section id="submission" class="card bg-baseBlue py-3">
+		<div class="card-body text-white text-center">
+			<h3 class="card-title display-5 fw-bold my-3">
+				Submit Article to Journal
+			</h3>
+			<div class="mt-5 mx-auto fs-4 w-75">
+				The author will submit the research manuscript in email address of the publisher from a permanent email
+				id of
+				the author.
+			</div>
+		</div>
+		<a href="https://drive.google.com/file/d/1oogcmHNKJqL92eegzmCDsHpt0l6-Vefu/view" target="_blank"
+			rel="noreferrer">
+			<button type="button" class="btn btn-light text-blue btn-lg px-4 my-3" title="Guidelines to Author">
+				Guidelines to Authors
+			</button>
+		</a>
+		<div class="container-fluid mt-3">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-6 col-9 card bg-yellow text-blue rounded-4">
+					<div class="card-head p-4">
+						<h3 class="fw-bold">Publisher</h3>
+						<div class="fs-4">Dr. Ruma Banerjee</div> <br />
+						<div class="fs-5">
+							AURA INTERNATIONAL, <br />
+							Rathtala, Lalpur, Chakdaha. <br />
+							P.O.- Chakdaha, District- Nadia, <br />
+							PIN- 741222, <br />
+							West Bengal, India.
+						</div>
+						<div class="mt-2 mb-0 pb-0">
+							<a href="tel:+917918989240" class="btn btn-lg text-blue fw-bold mb-0 pb-0">
+								+91 79189 89240
+							</a>
+						</div>
+						<div class="mt-0 pt-0">
+							<a href="mailto:editor@aura-international.org"
+								class="btn btn-lg text-blue fw-bold m-0 p-0 w-100">
+								editor@aura-international.org
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- SUBISSION Section Ends -->
+
+	<footer class="bg-light text-blue text-serif fw-normal py-2">
+		©<span id="current-year">2022</span>
+		<a href="https://www.aura-international.org" target="_blank" rel="noreferrer"
+			class="text-decoration-none text-blue">
+			Aura International Publishing House
+		</a>
+	</footer>
+	<script>
+		const fixHeightOfHero = () => {
+			const bottomOfHero = document.getElementById("hero").getBoundingClientRect().bottom
+			document.getElementById("hero-bg").style.height = `${bottomOfHero > 42 * 16 ? bottomOfHero : 42 * 16}px`
+		}
+		const navToggler = document.getElementById("navbar-toggler-btn")
+		navToggler.addEventListener("click", () => {
+			setTimeout(() => {
+				fixHeightOfHero()
+			}, 450)
+		})
+		fixHeightOfHero()
+	</script>
+</body>
+
+</html>
